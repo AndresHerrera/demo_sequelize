@@ -1,4 +1,12 @@
--- puntos prueba (lon,lat)
+## install
+
+npm i
+
+## run server 
+
+node index.js
+
+## puntos prueba (lon,lat)
 
 --http://localhost:3000/check?lon=2.15600&lat=41.30314
 -- 2.15600,41.30314  : fuera 
