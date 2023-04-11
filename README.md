@@ -22,3 +22,17 @@ node index.js
 
 --http://localhost:3000/check?lon=2.13976&lat=41.31002
 -- 2.13976,41.31002  : geocerca poly3 y geocerca poly1 
+
+## esta contenido en algun otro poligono 
+
+-- http://localhost:3000/list-estacontenido
+
+## esta contenido en algun otro poligono, identifica padre 
+
+-- http://localhost:3000/list-hijopadre
+
+## conteo de poligonos que esten dentro de otros poligonos
+
+-- http://localhost:3000/list-conteos
+
+## test JSON results:  https://jsonlint.com/

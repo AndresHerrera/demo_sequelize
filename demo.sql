@@ -12,3 +12,21 @@ INSERT INTO testfences ("geom" , "id", "name") VALUES ('0106000020E6100000010000
 INSERT INTO testfences ("geom" , "id", "name") VALUES ('0106000020E61000000100000001030000000100000006000000AAF6487E5F170140B43F2CFABDA7444082987E025823014042E3FDE805A84440861F728AF4240140212AB882C3A74440C0990A266E1F0140CBE93E3956A744403141364ACA190140FFAC03245DA74440AAF6487E5F170140B43F2CFABDA74440', 3, 'poly3');
 COMMIT;
 
+
+
+--QUERYS 
+
+SELECT "id", "name", "geom" FROM "testfences" AS "testfences" WHERE ST_Intersects("geom", ST_SetSRID(ST_MakePoint('2.13976', '41.31002'), 4326)) = true;
+
+-- Identifica si esta contenido en otro polygono 
+SELECT p1."id", p1."name", ST_AsGeoJSON(p1."geom") as geom, ST_Contains(p2."geom", p1."geom") AS is_contained
+FROM "testfences" AS p1
+LEFT JOIN "testfences" AS p2 ON ST_Contains(p2."geom", p1."geom") AND p1."id" <> p2."id";
+
+
+-- Identifica todos los poligonos, identifica el id padre y la geometria
+
+SELECT p1."id" AS "contained_id", ST_AsGeoJSON(p1."geom") AS "contained_geom",  p1."name" as "contained_name",
+       p2."id" AS "container_id", ST_AsGeoJSON(p2."geom") AS "container_geom",  p2."name" as "container_name"
+FROM "testfences" AS p1
+LEFT JOIN "testfences" AS p2 ON ST_Contains(p2."geom", p1."geom") AND p1."id" <> p2."id";

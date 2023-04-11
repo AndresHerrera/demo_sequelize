@@ -1,6 +1,6 @@
 module.exports = {
     username: 'postgres',
-    password: 'passwordaca',
+    password: 't763rm3n',
     database: 'actiontracker',
     host: 'localhost',
     port: '5432',
